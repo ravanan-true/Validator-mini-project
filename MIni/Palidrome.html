@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palidrome</title>
+    <style>
+         body{
+            font-family: Comic Sans MS;
+            background:url("123456.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        h1{
+            margin-top: 200px;
+            text-align: center;
+            color: white;
+        }
+        .a2d{
+            margin-top: 100px;
+            margin-left: 600px;
+            display: grid;
+        }
+        input{
+            font-family: Comic Sans MS;
+            font-weight: bold;
+            width: 300px;
+            height: 50px;
+            border: 2px solid black;
+            border-radius: 12px;
+            text-align: center;
+        }
+        button{
+            font-family: Comic Sans MS;
+            width: 309px;
+            height: 54px;
+            border: 2px solid black;
+            border-radius: 12px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: large;
+            font-weight: bold;
+        }
+        a{
+            text-decoration: none;
+        }
+        .a2c{
+            color: rgb(225, 38, 38);
+            margin-top: 75px;
+            margin-left: 1280px;
+            width: 180px;
+            height: 35px;
+            background-color: aqua; 
+            font-size: large;
+            font-weight: bold;
+            border: 2px solid black;
+            border-radius: 12px;
+            text-align: center;
+            padding-top:10px ;
+        }
+        .a2c:hover{
+            transform: scale(1.09);
+            border: 2px solid black ;
+            color: rgb(191, 34, 230);
+        }
+    </style>
+</head>
+<body>
+    <h1>Palidrome</h1>
+    <div class="a2d">
+        <input type="text" id="num" placeholder="Enter the Number">
+        <button onclick="checknum()">
+            Check
+        </button>
+        <input type="text" id="answer" placeholder="Answer....." readonly>
+    </div>
+    <a href="Project.html"><div class="a2c">Return Home</div></a>
+
+    <script>
+
+        function checknum(){
+
+            let dig = document.getElementById("num").value;
+
+            let answer = document.getElementById("answer");
+            
+            if(dig.trim()==""){
+                answer.value = "Enter a number";
+            }
+            else if(isNaN(dig)){
+                answer.value = "Enter a number only";
+            }
+            else if(dig<0){
+                answer.value = "Negative Numbers Not Allowed";
+            }else{
+
+                dig = Number(dig);
+
+                let dub = dig;
+                let temp = 0;
+
+                while(dig > 0){
+                    let remains = dig % 10;
+                    temp = temp * 10 + remains;
+                    dig = Math.floor(dig/10);
+                }
+
+                if(dub == temp){
+                answer.value = dub + " is Palidrome Number.";
+                }
+                else{
+                    answer.value = dub + " is Not Palidrome Number.";
+                }
+            }
+            
+        }
+    </script>
+</body>
+</html>
